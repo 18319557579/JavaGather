@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.0'
 }
 
 group = 'org.hsf'
@@ -16,6 +16,10 @@ dependencies {
 //    testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
-test {
-    useJUnitPlatform()
+//test {
+//    useJUnitPlatform()
+//}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = '1.8'
 }
