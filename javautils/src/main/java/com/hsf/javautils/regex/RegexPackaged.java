@@ -5,7 +5,9 @@ package com.hsf.javautils.regex;
 import com.hsf.javautils.LogUtil;
 import com.hsf.javautils.map.MapUtil;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -162,5 +164,22 @@ public class RegexPackaged {
         Pattern pattern = Pattern.compile("<([^>]+)>[\\d\\D]*</\\1>");  //要使用反向引用
         Matcher matcher = pattern.matcher(originStr);
         return matcher.matches();
+    }
+
+    /**
+     * 将一个单词用大写字母进行划分
+     * 例，Fb143524OUfficialDebugK
+     */
+    public static List<String> getStrList(String inputStr) {
+        Pattern pattern = Pattern.compile("[A-Z]\\w*?((?=[A-Z])|$)");
+        Matcher matcher = pattern.matcher(inputStr);
+
+        List<String> listStr = new ArrayList<>();
+        while (matcher.find()) {
+            String matchedStr = matcher.group();
+            listStr.add(matchedStr);
+        }
+
+        return listStr;
     }
 }
