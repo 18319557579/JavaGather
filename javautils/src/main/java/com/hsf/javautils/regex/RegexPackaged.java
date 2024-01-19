@@ -169,6 +169,8 @@ public class RegexPackaged {
     /**
      * 将一个单词用大写字母进行划分
      * 例，Fb143524OUfficialDebugK
+     *
+     * 不过，orgnicOfficialRelease，就只能得到official，Release，无法拿到orgnic。可以使用下面的函数
      */
     public static List<String> getStrList(String inputStr) {
         Pattern pattern = Pattern.compile("[A-Z]\\w*?((?=[A-Z])|$)");
@@ -177,6 +179,22 @@ public class RegexPackaged {
         List<String> listStr = new ArrayList<>();
         while (matcher.find()) {
             String matchedStr = matcher.group();
+            listStr.add(matchedStr);
+        }
+
+        return listStr;
+    }
+
+    /**
+     * 将驼峰法命名的String进行分割（包括大驼峰和小驼峰都适用）
+     */
+    public static List<String> camelCaseSplit(String inputStr) {
+        Pattern pattern = Pattern.compile("(^|(?=[A-Z]))\\w+?((?=[A-Z])|$)");
+        Matcher matcher = pattern.matcher(inputStr);
+
+        List<String> listStr = new ArrayList<>();
+        while (matcher.find()) {
+            String matchedStr = matcher.group();  //group()表示整体匹配，即整个匹配到的作为一个分组
             listStr.add(matchedStr);
         }
 
