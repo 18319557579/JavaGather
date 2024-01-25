@@ -34,4 +34,7 @@ fun main() {
         System.out.println(RegexRecord.isIpv4("03.008.120.249"))
         System.out.println(RegexRecord.isIpv4("256.111.120.222"))
     }
+    block("获得子分组中的内容") {
+        System.out.println(RegexUtil.getSpecifiedGroup(".{4}(.+)", "JavaScript", 1))
+    }
 }

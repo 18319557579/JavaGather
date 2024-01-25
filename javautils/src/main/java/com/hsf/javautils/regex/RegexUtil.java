@@ -93,4 +93,16 @@ public class RegexUtil {
         }
         return substringList;
     }
+
+    /**
+     * 获得指定指定分组的匹配内容，注意0代表整体匹配。所以子分组从1开始
+     */
+    public static String getSpecifiedGroup(String regex, String inputStr, int groupIndex) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(inputStr);
+        if (matcher.find()) {
+            return matcher.group(groupIndex);
+        }
+        return null;
+    }
 }
