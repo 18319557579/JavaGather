@@ -3,6 +3,7 @@ package com.hsf.javagather
 import com.hsf.javagather.utils.block
 import com.hsf.javautils.LogUtil
 import com.hsf.javautils.regex.RegexPackaged
+import com.hsf.javautils.regex.RegexRecord
 import com.hsf.javautils.regex.RegexUtil
 
 fun main() {
@@ -27,5 +28,10 @@ fun main() {
         System.out.println(RegexPackaged.camelCaseSplit("WW73eMoe_32").joinToString())
         System.out.println(RegexPackaged.camelCaseSplit("a_23B_23MHS").joinToString())
         System.out.println(RegexPackaged.camelCaseSplit("W22HeM").joinToString())
+    }
+    block("判断是否为Ipv4的地址") {
+        System.out.println(RegexRecord.isIpv4("100.23.232.090"))
+        System.out.println(RegexRecord.isIpv4("03.008.120.249"))
+        System.out.println(RegexRecord.isIpv4("256.111.120.222"))
     }
 }
