@@ -22,7 +22,7 @@ fun main() {
         System.out.println(RegexPackaged.isWindowsDir("F:\\sdf\\*3"));
     }
     block("分割驼峰法的String") {
-        System.out.println(RegexPackaged.camelCaseSplit("abcKadPPe").joinToString())
+        System.out.println(RegexPackaged.camelCaseSplit("abcKadPPe").joinToString());
         System.out.println(RegexPackaged.camelCaseSplit("se0BeK").joinToString())
         System.out.println(RegexPackaged.camelCaseSplit("WW73eMoe_32").joinToString())
         System.out.println(RegexPackaged.camelCaseSplit("a_23B_23MHS").joinToString())
