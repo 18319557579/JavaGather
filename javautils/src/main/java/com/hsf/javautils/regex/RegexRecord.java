@@ -31,4 +31,16 @@ public class RegexRecord {
                 "^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵青藏川宁琼][[A-Z]&&[^IO]][0-9A-Z&&[^IO]]{5,6}|粤([[A-Y]&&[^IO]][0-9A-Z&&[^IO]]{5,6}|Z[0-9A-Z&&[^IO]]{4}[港澳])$",
                 inputStr);
     }
+
+    /**
+     * 判断是否为合法的Email地址
+     * 1.电子邮箱组成部分: 用户名@域名
+     * 2.用户名由数字和字母构成，至少为1位
+     * 3.域名由数字和字母构成，存在多级域名的情况，且至少为2级，用.来分隔，每级域名至少为1位
+     */
+    public static boolean isLegalEmail(String email) {
+        return RegexUtil.matches(
+                "^[0-9a-zA-Z]+@[0-9a-zA-Z]+(\\.[0-9a-zA-Z]+)+$",
+                email);
+    }
 }
