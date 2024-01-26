@@ -1,6 +1,7 @@
 package com.hsf.javagather
 
 import com.hsf.javagather.utils.block
+import com.hsf.javautils.regex.RegexRecord
 import com.hsf.javautils.regex.RegexUtil
 import java.util.regex.Pattern
 
@@ -70,7 +71,7 @@ fun main() {
         println(pattern.matcher("湘A222HD澳").matches())
     }
     block("车牌号总判断") {
-        val pattern = Pattern.compile("^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵青藏川宁琼][[A-Z]&&[^IO]][0-9A-Z&&[^IO]]{5,6}|粤([[A-Y]&&[^IO]][0-9A-Z&&[^IO]]{5,6}|Z[0-9A-Z&&[^IO]]{4}[港澳])$")
+        val pattern = Pattern.compile("^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵青藏川宁琼][A-Z&&[^IO]][0-9A-Z&&[^IO]]{5,6}|粤([A-Y&&[^IO]][0-9A-Z&&[^IO]]{5,6}|Z[0-9A-Z&&[^IO]]{4}[港澳])$")
         println(pattern.matcher("湘ASGJ86").matches())
         println(pattern.matcher("粤Z2235港").matches())
         println(pattern.matcher("粤Z2港").matches())
@@ -78,5 +79,14 @@ fun main() {
         println(pattern.matcher("湘A222HD325").matches())
         println(pattern.matcher("粤Y324L港").matches())
         println(pattern.matcher("粤Z324L港").matches())
+    }
+    block("用封装的判断") {
+        println(RegexRecord.isLegalCarNum("湘ASGJ86"))
+        println(RegexRecord.isLegalCarNum("粤Z2235港"))
+        println(RegexRecord.isLegalCarNum("粤Z2港"))
+        println(RegexRecord.isLegalCarNum("粤Z222HD澳"))
+        println(RegexRecord.isLegalCarNum("湘A222HD325"))
+        println(RegexRecord.isLegalCarNum("粤Y324L港"))
+        println(RegexRecord.isLegalCarNum("粤Z324L港"))
     }
 }
