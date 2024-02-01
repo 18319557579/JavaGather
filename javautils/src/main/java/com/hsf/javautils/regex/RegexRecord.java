@@ -43,4 +43,25 @@ public class RegexRecord {
                 "^[0-9a-zA-Z]+@[0-9a-zA-Z]+(\\.[0-9a-zA-Z]+)+$",
                 email);
     }
+
+    /**
+     * 判断是否为合法的身份证id
+     * 1.之前的身份证号码为15位，全数字
+     * 2.现在的身份证号码位18位，最后一位是校验位，可能为X
+     */
+    public static boolean isLegalIDCard(String id) {
+        return RegexUtil.matches(
+                "\\d{17}[\\dX]|\\d{15}",
+                id);
+    }
+
+    /**
+     * 判断是否为中文词语
+     * 不能包含中文以外的字符
+     */
+    public static boolean isChineseWords(String words) {
+        return RegexUtil.matches(
+                "^[\\u4e00-\\u9fa5]+$",
+                words);
+    }
 }
