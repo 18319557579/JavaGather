@@ -35,19 +35,36 @@ public class RegexUtil {
         return null;
     }
 
+    public static List<String> findSubstringAll(String regex, String inputStr) {
+        return findSubstringAll(regex, inputStr, false);
+    }
+
     /**
      * 输入串inputStr中，找到所有和regex匹配的子串
+     *
+     * Matcher.find() 方法默认是从当前匹配的子序列的结束位置（通过 end() 获取）之后的位置开始匹配下一个子序列。
+     * 如果你希望回溯匹配，可以使用 Matcher.find(int start) 方法来指定从哪个位置开始查找下一个匹配
+     * @param allowBacktracking 是否启用find()回溯匹配
      */
-    public static List<String> findSubstringAll(String regex, String inputStr) {
+    public static List<String> findSubstringAll(String regex, String inputStr, boolean allowBacktracking) {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(inputStr);
         List<String> substringList = new ArrayList<>();
-        while (matcher.find()) {
-            int start = matcher.start();
-            int end = matcher.end();
-            String match = inputStr.substring(start, end);
-            substringList.add(match);
+
+        if (allowBacktracking) {
+            int startPosition = 0;
+            while (matcher.find(startPosition)) {
+                substringList.add(matcher.group());
+
+                startPosition = matcher.start() + 1;
+            }
+
+        } else {
+            while (matcher.find()) {
+                substringList.add(matcher.group());
+            }
         }
+
         return substringList;
     }
 
