@@ -103,4 +103,22 @@ public class RegexRecord {
             startLocation = matcher.end();
         }
     }
+
+    /**
+     * 判断输入串是否合法（当包含非法单词时就不合法，否则合法）
+     */
+    public static boolean isLegalWords(String inputStr) {
+        String huang = "黄|([Hh][Uu][Aa][Nn][Gg])";
+        String pian = "片|([Pp][Ii][Aa][Nn])";
+        String regex = String.format("[Pp]\\s*[Oo]\\s*[Rr]\\s*[Nn]|((%s)\\s*(%s))", huang, pian);
+        System.out.println("得到的正则:" + regex);
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(inputStr);
+
+        if (matcher.find()) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -5,8 +5,22 @@ import com.hsf.javautils.LogUtil
 import com.hsf.javautils.regex.RegexPackaged
 import com.hsf.javautils.regex.RegexRecord
 import com.hsf.javautils.regex.RegexUtil
+import java.util.regex.Pattern
 
 fun main() {
+    block("判断是否合法(不包含黄片信息)") {
+        println(RegexRecord.isLegalWords("p orfn黄piaN p片iAn"))
+        println(RegexRecord.isLegalWords("黄    片"))
+        println(RegexRecord.isLegalWords("黄   " +
+                " 片"))
+        println(RegexRecord.isLegalWords("P O r n"))
+        println(RegexRecord.isLegalWords("P O_r n"))
+        println(RegexRecord.isLegalWords("黄 pia N"))
+        println(RegexRecord.isLegalWords("HUang片"))
+        println(RegexRecord.isLegalWords("p 黄orn"))
+        println(RegexRecord.isLegalWords("por片n"))
+        println(RegexRecord.isLegalWords("POR黄_片"))
+    }
     block("测试正则表达式globalFind()和singleFind()") {
         LogUtil.println(
             RegexUtil.findSubstringAll("#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})", "#ffbbad #Fc01DF #FFF #ffE").toString()
