@@ -1,5 +1,8 @@
 package com.hsf.javautils.regex;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RegexRecord {
     /**
      * 判断是否为Ipv4的地址，范围是0.0.0.0~255.255.255.255，要考虑不足三位时前面可能补0的情况
@@ -63,5 +66,41 @@ public class RegexRecord {
         return RegexUtil.matches(
                 "^[\\u4e00-\\u9fa5]+$",
                 words);
+    }
+
+    /**/
+    /**
+     * 找到Java代码中所有的注释、起始位置、结束位置，并判断注释类型
+     * 1.单行注释最先判断，从单行注释开始的位置到本行结束都是注释内容
+     * 2.由于多行注释是文档注释的真子集，因此先让文档注释判断。但是这处理不了上面这种空的多行注释的情况，因此多加一个第4个字符为非/的判断
+     * 3.最后判断多行注释
+     *
+     * 因为不会出现重叠注释的情况，所以find的下次开始位置为上次注释的结尾位置，
+     */
+    public static void findAllComments(String inputStr) {
+        Pattern pattern = Pattern.compile(
+                "//(?<singleLineComments>[\\d\\D]*?)$|" +
+                        "/\\*\\*(?:(?!/))(?<documentComments>[\\d\\D]*?)\\*/|" +
+                        "/\\*(?<multiLineComments>[\\d\\D]*?)\\*/",
+                Pattern.MULTILINE);
+        Matcher matcher = pattern.matcher(inputStr);
+
+        int startLocation = 0;
+        while (matcher.find(startLocation)) {
+            System.out.println("Match: " + matcher.group());
+            System.out.println("start: " + matcher.start());
+            System.out.println("end: " + matcher.end());
+
+            if (matcher.group("singleLineComments") != null) {
+                System.out.println("单行注释:" + matcher.group("singleLineComments"));
+            } else if (matcher.group("multiLineComments") != null) {
+                System.out.println("多行注释:" + matcher.group("multiLineComments"));
+            } else if (matcher.group("documentComments") != null) {
+                System.out.println("文档注释:" + matcher.group("documentComments"));
+            }
+            System.out.println("-----------------------------------------------------\n");
+
+            startLocation = matcher.end();
+        }
     }
 }
