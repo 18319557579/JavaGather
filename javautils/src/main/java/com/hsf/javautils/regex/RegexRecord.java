@@ -121,4 +121,44 @@ public class RegexRecord {
         }
         return true;
     }
+
+    /**
+     * 将String中关于黄色的内容进行替换
+     * 1.英文的黄色内容使用*进行替换，中文的使用#替换
+     * 2.多少位的黄色内容就用多少位* #替换
+     */
+    public static String encodedIllegalWords(String inputStr) {
+        String huang = "黄|([Hh][Uu][Aa][Nn][Gg])";
+        String pian = "片|([Pp][Ii][Aa][Nn])";
+        String regex = String.format("(?<english>[Pp]\\s*[Oo]\\s*[Rr]\\s*[Nn])|(?<chinese>(%s)\\s*(%s))", huang, pian);
+        System.out.println("得到的正则:" + regex);
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(inputStr);
+
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            System.out.println("英文:" + matcher.group("english"));
+            System.out.println("中文:" + matcher.group("chinese"));
+
+            String repalcement = "";
+            if (matcher.group("english") != null) {
+                StringBuilder repeatedStringBuilder = new StringBuilder();
+                for (int i = 0; i < matcher.group("english").length(); i++) {
+                    repeatedStringBuilder.append("*");
+                }
+                repalcement = repeatedStringBuilder.toString();
+
+            } else if (matcher.group("chinese") != null){
+                StringBuilder repeatedStringBuilder = new StringBuilder();
+                for (int i = 0; i < matcher.group("chinese").length(); i++) {
+                    repeatedStringBuilder.append("#");
+                }
+                repalcement = repeatedStringBuilder.toString();
+            }
+            matcher.appendReplacement(sb, repalcement);
+        }
+        matcher.appendTail(sb);
+        return sb.toString();
+    }
 }

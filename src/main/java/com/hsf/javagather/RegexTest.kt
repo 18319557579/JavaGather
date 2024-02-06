@@ -8,6 +8,19 @@ import com.hsf.javautils.regex.RegexUtil
 import java.util.regex.Pattern
 
 fun main() {
+    block("得到规范化后的String") {
+        println(RegexRecord.encodedIllegalWords("p orfn黄piaN p片iAn"))
+        println(RegexRecord.encodedIllegalWords("黄    片"))
+        println(RegexRecord.encodedIllegalWords("黄   " +
+                " 片"))
+        println(RegexRecord.encodedIllegalWords("P O r n"))
+        println(RegexRecord.encodedIllegalWords("P O_r n"))
+        println(RegexRecord.encodedIllegalWords("黄 pia N"))
+        println(RegexRecord.encodedIllegalWords("HUang片"))
+        println(RegexRecord.encodedIllegalWords("p 黄orn"))
+        println(RegexRecord.encodedIllegalWords("por片n"))
+        println(RegexRecord.encodedIllegalWords("POR黄_片"))
+    }
     block("判断是否合法(不包含黄片信息)") {
         println(RegexRecord.isLegalWords("p orfn黄piaN p片iAn"))
         println(RegexRecord.isLegalWords("黄    片"))
