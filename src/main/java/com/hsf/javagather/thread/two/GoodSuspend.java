@@ -36,7 +36,30 @@ public class GoodSuspend {
         }
     }
 
-    public static void main(String[] args) {
+    public static class ReadObjectThread extends Thread {
+        @Override
+        public void run() {
+            while (true) {
+                synchronized (u) {
+                    System.out.println("in ReadObjectThread");
+                }
+                Thread.yield();
+            }
+        }
+    }
 
+    public static void main(String[] args) throws InterruptedException {
+        ChangeObjectThread t1 = new ChangeObjectThread();
+        ReadObjectThread t2 = new ReadObjectThread();
+        t1.start();
+        t2.start();
+        Thread.sleep(1000);
+
+        t1.suspendMe();
+        System.out.println("suspend t1 10sec");
+        Thread.sleep(10000);
+
+        System.out.println("resume t1");
+        t1.resumeMe();
     }
 }
