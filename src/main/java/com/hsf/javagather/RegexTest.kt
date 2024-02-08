@@ -5,9 +5,11 @@ import com.hsf.javautils.LogUtil
 import com.hsf.javautils.regex.RegexPackaged
 import com.hsf.javautils.regex.RegexRecord
 import com.hsf.javautils.regex.RegexUtil
-import java.util.regex.Pattern
 
 fun main() {
+    block("转换时间格式") {
+        println(RegexRecord.convertDateFormat("2017-06/12hsf黄绍飞2017/06/12。。下一个时间2022|12|15，上一个不行我来2023-10-31。。、、。。2022.11.29"))
+    }
     block("得到规范化后的String") {
         println(RegexRecord.encodedIllegalWords("p orfn黄piaN p片iAn"))
         println(RegexRecord.encodedIllegalWords("黄    片"))

@@ -161,4 +161,38 @@ public class RegexRecord {
         matcher.appendTail(sb);
         return sb.toString();
     }
+
+    /**
+     * 转换日期格式
+     * 1.转换的分割符为3种，并且要前后一致
+     * 2.将分割及末尾替换为年、月、日
+     */
+    public static String convertDateFormat(String inputStr) {
+        Pattern pattern = Pattern.compile("\\d{4}(-|/|\\.)\\d{2}\\1\\d{2}");
+        Matcher matcher = pattern.matcher(inputStr);
+
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            String allMatch = matcher.group(0);
+            String separator = matcher.group(1);
+            System.out.println("全匹配: " + allMatch + ", 分隔符: " + separator);
+
+            char[] replacements = {'年', '月', '日'};
+            int replacementIndex = 0;
+
+            StringBuilder sBuilder = new StringBuilder(allMatch);
+            //这里匹配了2个分隔符后就退出，完美解决了效率问题
+            for (int i = 0; i < sBuilder.length() && replacementIndex < 2; i++) {
+                if (String.valueOf(sBuilder.charAt(i)).equals(separator)) {
+                    sBuilder.setCharAt(i, replacements[replacementIndex++]);
+                }
+            }
+            sBuilder.append(replacements[replacementIndex]);  //将日拼到末尾
+
+            matcher.appendReplacement(sb, sBuilder.toString());
+        }
+        matcher.appendTail(sb);
+
+        return sb.toString();
+    }
 }

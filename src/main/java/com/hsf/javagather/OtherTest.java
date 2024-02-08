@@ -18,5 +18,10 @@ public class OtherTest {
         LogUtil.println(
                 RegexUtil.findSubstringAll("[a-z]\\w{5}", "abc12432", true).toString()
         );
+
+        StringBuilder sBuilder = new StringBuilder("abc");
+        System.out.println(sBuilder.charAt(0));
+        System.out.println(String.valueOf(sBuilder.charAt(0)).equals("a"));
+
     }
 }
