@@ -195,4 +195,14 @@ public class RegexRecord {
 
         return sb.toString();
     }
+
+    /**
+     * 压缩连续的重复字符
+     * 空白符不压缩
+     */
+    public static String compressRepeatCharacter(String inputStr) {
+        Pattern pattern = Pattern.compile("(\\S)\\1+");
+        Matcher matcher = pattern.matcher(inputStr);
+        return matcher.replaceAll("$1");
+    }
 }
