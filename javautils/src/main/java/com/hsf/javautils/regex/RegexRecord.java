@@ -173,8 +173,8 @@ public class RegexRecord {
 
         StringBuffer sb = new StringBuffer();
         while (matcher.find()) {
-            String allMatch = matcher.group(0);
-            String separator = matcher.group(1);
+            String allMatch = matcher.group(0);  //匹配到的日期
+            String separator = matcher.group(1);  //匹配到的分隔符
             System.out.println("全匹配: " + allMatch + ", 分隔符: " + separator);
 
             char[] replacements = {'年', '月', '日'};
@@ -200,9 +200,39 @@ public class RegexRecord {
      * 压缩连续的重复字符
      * 空白符不压缩
      */
-    public static String compressRepeatCharacter(String inputStr) {
+    public static String compressSerialRepeatCharacter(String inputStr) {
         Pattern pattern = Pattern.compile("(\\S)\\1+");
         Matcher matcher = pattern.matcher(inputStr);
         return matcher.replaceAll("$1");
+    }
+
+    /**
+     * 压缩重复字符，只保留第一个
+     * 空白符不压缩
+     */
+    public static String compressRepeatCharacter(String inputStr) {
+        Pattern pattern = Pattern.compile("(\\S)(.*\\1)+");  //匹配重复出现的字符
+        Matcher matcher = pattern.matcher(inputStr);
+
+        int startIndex = 0;  //标记开始查找的index，每次向后移动一个位置
+        while (matcher.find(startIndex)) {
+            String allMatch = matcher.group(0);
+            String separator = matcher.group(1);
+            System.out.println("全匹配: " + allMatch + ", 重复字符: " + separator + ", 匹配的开始位置: " + matcher.start());
+
+            //保留第一个字符，其他的干掉
+            String afterReplace = separator + allMatch.replaceAll(separator, "");
+            System.out.println("替换后的字符串: " + afterReplace);
+
+            StringBuffer sb = new StringBuffer();
+            matcher.appendReplacement(sb, afterReplace);
+            matcher.appendTail(sb);  //在这一步进行替换
+            System.out.println("替换后的串: " + sb.toString());
+
+            startIndex = matcher.start() + 1;
+            matcher.reset(inputStr = sb.toString());  //由于每一次都可能是最后一次，因此将本次的结果保存在inputStr中
+        }
+
+        return inputStr;
     }
 }

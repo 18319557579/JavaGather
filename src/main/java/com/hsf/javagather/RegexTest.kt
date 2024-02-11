@@ -66,4 +66,9 @@ fun main() {
     block("获得子分组中的内容") {
         System.out.println(RegexUtil.getSpecifiedGroup(".{4}(.+)", "JavaScript", 1))
     }
+    block("去除重复字符") {
+        println("***最终的: " + RegexRecord.compressRepeatCharacter("399黄烧沸的黄。hj黄43就就"))
+        println("***最终的: " + RegexRecord.compressRepeatCharacter("哈哈"))
+        println("***最终的: " + RegexRecord.compressRepeatCharacter("Sdi  / sdhfi   pod"))
+    }
 }
