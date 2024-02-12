@@ -3,6 +3,9 @@ package com.hsf.javagather;
 import com.hsf.javautils.LogUtil;
 import com.hsf.javautils.regex.RegexUtil;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class OtherTest {
     public static void main(String[] args) {
         LogUtil.println(
@@ -22,6 +25,13 @@ public class OtherTest {
         StringBuilder sBuilder = new StringBuilder("abc");
         System.out.println(sBuilder.charAt(0));
         System.out.println(String.valueOf(sBuilder.charAt(0)).equals("a"));
+
+        Pattern pattern = Pattern.compile("[^a-zA-z]+");
+        String [] strs = pattern.split("Hello, world! This is a test: 123; okay, 456; done.");
+
+        for (String str : strs) {
+            System.out.println(str);
+        }
 
     }
 }

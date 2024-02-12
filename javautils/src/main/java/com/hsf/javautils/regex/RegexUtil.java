@@ -122,4 +122,12 @@ public class RegexUtil {
         }
         return null;
     }
+
+    /**
+     * 将输入串用正则进行分割
+     */
+    public static String[] splitInputString(String regex, String inputStr) {
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.split(inputStr);
+    }
 }
