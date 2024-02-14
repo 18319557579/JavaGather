@@ -235,4 +235,19 @@ public class RegexRecord {
 
         return inputStr;
     }
+
+    /**
+     * 判断密码有效性
+     * 1.至少8个字符，最多20个字符；
+     * 2.至少包含一个小写字母；
+     * 3.至少包含一个大写字母；
+     * 4.至少包含一个数字；
+     * 5.至少包含一个特殊字符（如!@#$%^&*）；
+     * 6.不包含空格或其他非打印字符。
+     */
+    public static boolean passwordValid(String inputStr) {
+        Pattern pattern = Pattern.compile("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_])^\\S{8,20}$");
+        Matcher matcher = pattern.matcher(inputStr);
+        return matcher.matches();
+    }
 }

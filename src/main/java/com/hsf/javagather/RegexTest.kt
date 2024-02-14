@@ -71,4 +71,10 @@ fun main() {
         println("***最终的: " + RegexRecord.compressRepeatCharacter("哈哈"))
         println("***最终的: " + RegexRecord.compressRepeatCharacter("Sdi  / sdhfi   pod"))
     }
+    block("判断密码有效性") {
+        println(RegexRecord.passwordValid("ValidPassword1!"))
+        println(RegexRecord.passwordValid("InvalidPassword"))
+        println(RegexRecord.passwordValid("Another_Valid1"))
+        println(RegexRecord.passwordValid("Another_Val id1"))
+    }
 }
