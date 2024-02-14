@@ -250,4 +250,14 @@ public class RegexRecord {
         Matcher matcher = pattern.matcher(inputStr);
         return matcher.matches();
     }
+
+    public static boolean passwordValid2(String inputStr) {
+        Pattern pattern = Pattern.compile("(?=(.*[a-z]){2})" +
+                "(?=(.*[A-Z]){2})" +
+                "(?=(.*[0-9]){2})" +
+                "(?=(.*[!@#$%^&*_]){2})" +
+                "^\\S{8,20}$");
+        Matcher matcher = pattern.matcher(inputStr);
+        return matcher.matches();
+    }
 }

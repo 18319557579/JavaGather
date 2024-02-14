@@ -77,4 +77,12 @@ fun main() {
         println(RegexRecord.passwordValid("Another_Valid1"))
         println(RegexRecord.passwordValid("Another_Val id1"))
     }
+    block("判断密码有效性2") {
+        println(RegexRecord.passwordValid2("abAB12_!"))
+        println(RegexRecord.passwordValid2("bAB12_!!"))
+        println(RegexRecord.passwordValid2("abcdA12_!"))
+        println(RegexRecord.passwordValid2("adsfabAB1_!"))
+        println(RegexRecord.passwordValid2("abASDFSB12!"))
+        println(RegexRecord.passwordValid2("abABsfaffeafsadfsfsfasdfsadf12_!"))
+    }
 }
