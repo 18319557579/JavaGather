@@ -251,6 +251,10 @@ public class RegexRecord {
         return matcher.matches();
     }
 
+    /**
+     * 上面的升级版
+     * 每种字符的类型为2位
+     */
     public static boolean passwordValid2(String inputStr) {
         Pattern pattern = Pattern.compile("(?=(.*[a-z]){2})" +
                 "(?=(.*[A-Z]){2})" +
@@ -259,5 +263,41 @@ public class RegexRecord {
                 "^\\S{8,20}$");
         Matcher matcher = pattern.matcher(inputStr);
         return matcher.matches();
+    }
+
+    /**
+     * 判断密码的安全性
+     * 1.如果最基本的判断都不过关则返回0
+     * 2.如果最基本的判断过关，即范围内的字符位数在6~30位，且各种字符都要有1位，即返回1
+     * 3.如果位数大于或等于12位则安全等级+1
+     * 4.如果每种类型的字符都至少有两个，则安全等级+1
+     */
+    public static int passwordSecurityLevel(String inputStr) {
+        int level = 0;
+
+        //首先每种类型的字符至少要有一个，并且位数要在范围之内；否则，直接返回0
+        Pattern pattern = Pattern.compile("(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*_])^[a-zA-Z0-9!@#$%^&*_]{6,30}$");
+        if (pattern.matcher(inputStr).matches()) {
+            level++;
+        } else {
+            return level;
+        }
+
+        //如果位数大于或等于12位则安全等级+1
+        pattern = Pattern.compile("\\S{12,}");
+        if (pattern.matcher(inputStr).find()) {
+            level++;
+        }
+
+        //如果每种类型的字符都至少有两个，则安全等级+1
+        pattern = Pattern.compile("(?=(.*[a-za-zA-Z]){2})" +
+                "(?=(.*[0-9]){2})" +
+                "(?=(.*[!@#$%^&*_]){2})"
+        );
+        if (pattern.matcher(inputStr).find()) {
+            level++;
+        }
+
+        return level;
     }
 }

@@ -85,4 +85,14 @@ fun main() {
         println(RegexRecord.passwordValid2("abASDFSB12!"))
         println(RegexRecord.passwordValid2("abABsfaffeafsadfsfsfasdfsadf12_!"))
     }
+    block("获得密码的安全等级") {
+        println(RegexRecord.passwordSecurityLevel("12sdf!"))
+        println(RegexRecord.passwordSecurityLevel("12sf!"))
+        println(RegexRecord.passwordSecurityLevel(" 1232sf!"))
+        println(RegexRecord.passwordSecurityLevel("和你1232sf!"))
+        println(RegexRecord.passwordSecurityLevel("12sdf!rwerwwqqe"))
+        println(RegexRecord.passwordSecurityLevel("12sdf!rwerwwqqe*"))
+        println(RegexRecord.passwordSecurityLevel("12sqe!!*"))
+        println(RegexRecord.passwordSecurityLevel("12sasdfasfasfasfas343453151355234325fasfqe!!*"))
+    }
 }
