@@ -300,4 +300,17 @@ public class RegexRecord {
 
         return level;
     }
+
+    /**
+     * 1.字符串必须以字母开头。
+     * 2.紧接着至少有一个数字。
+     * 3.在数字之后，必须包含一个或多个小数点或逗号（.或,）。
+     * 4.小数点或逗号之后，必须紧跟至少三个字母。
+     * 5.字符串必须以数字结束。
+     */
+    public static boolean isComplexString(String inputStr) {
+        Pattern pattern = Pattern.compile("^[a-zA-Z]+\\d+[,.]+[a-zA-Z]{3,}[\\s\\S]*\\d$");
+        Matcher matcher = pattern.matcher(inputStr);
+        return matcher.matches();
+    }
 }

@@ -95,4 +95,13 @@ fun main() {
         println(RegexRecord.passwordSecurityLevel("12sqe!!*"))
         println(RegexRecord.passwordSecurityLevel("12sasdfasfasfasfas343453151355234325fasfqe!!*"))
     }
+    block("判断是否匹配复杂的正则") {
+        println(RegexRecord.isComplexString("a123.xyz789"))
+        println(RegexRecord.isComplexString("1.abc123"))
+        println(RegexRecord.isComplexString("abc.sdfsf23"))
+        println(RegexRecord.isComplexString("zna32,.*fssafsd3"))
+        println(RegexRecord.isComplexString("ppPPP33274832.,.UE33223"))
+        println(RegexRecord.isComplexString("UI23234.,.,.,jff33333f\ne"))
+        println(RegexRecord.isComplexString("UI23234.,.,.,jff33333f\ne2"))
+    }
 }
