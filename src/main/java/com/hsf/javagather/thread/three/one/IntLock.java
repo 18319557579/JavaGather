@@ -1,7 +1,6 @@
-package com.hsf.javagather.thread.three;
+package com.hsf.javagather.thread.three.one;
 
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.regex.Pattern;
 
 public class IntLock implements Runnable{
     public static ReentrantLock lock1 = new ReentrantLock();

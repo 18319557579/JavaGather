@@ -1,4 +1,4 @@
-package com.hsf.javagather.thread.three;
+package com.hsf.javagather.thread.three.one;
 
 import java.util.Random;
 import java.util.concurrent.locks.Lock;
