@@ -1,7 +1,11 @@
 package com.hsf.javautils.regex;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class RegexRecord {
     /**
@@ -312,5 +316,17 @@ public class RegexRecord {
         Pattern pattern = Pattern.compile("^[a-zA-Z]+\\d+[,.]+[a-zA-Z]{3,}[\\s\\S]*\\d$");
         Matcher matcher = pattern.matcher(inputStr);
         return matcher.matches();
+    }
+
+    /**
+     * 过滤得到包含数字的字符串
+     */
+    public static List<String> filterContainsNumber(List<String> inputStrList) {
+        Pattern pattern = Pattern.compile("\\d");  //包含数字
+        Predicate<String> predicate = pattern.asPredicate();  //将一个正则表达式模式转换为一个谓词（Predicate），本质是Matcher.find()
+        List<String> filteredStrings = inputStrList.stream()  //先将List转为流
+                .filter(predicate)  //过滤剩下包含数字的
+                .collect(Collectors.toList());
+        return filteredStrings;
     }
 }

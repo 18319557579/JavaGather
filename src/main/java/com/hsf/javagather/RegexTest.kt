@@ -104,4 +104,8 @@ fun main() {
         println(RegexRecord.isComplexString("UI23234.,.,.,jff33333f\ne"))
         println(RegexRecord.isComplexString("UI23234.,.,.,jff33333f\ne2"))
     }
+    block("过滤得到包含数字的字符串") {
+        val strs = mutableListOf("apple", "banana1", "orange2", "grape", "melon3")
+        println("过滤得到包含数字的字符串：" + RegexRecord.filterContainsNumber(strs))
+    }
 }
