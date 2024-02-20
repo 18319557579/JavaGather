@@ -1,4 +1,4 @@
-package com.hsf.javagather.thread.three;
+package com.hsf.javagather.thread.three.two;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
