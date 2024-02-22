@@ -329,4 +329,25 @@ public class RegexRecord {
                 .collect(Collectors.toList());
         return filteredStrings;
     }
+
+    /**
+     * 判断是否为合法的Java数值
+     *
+     * 进制，二进制、八进制、十进制、十六进制
+     * 整型（int，long）、浮点数（float，double）
+     * 是否带_
+     * （大小范围限制，感觉很难用正则进行约束）
+     *
+     * A:所有进制 + 整型 + 是否带_都可以 + 不做大小范围判断
+     */
+    public static boolean isJavaNumericTypes(String inputStr) {
+        Pattern pattern = Pattern.compile("^(" +
+                "0|([1-9][0-9_]+)|" +  //十进制
+                "0[0-7_]+|" +  //八进制
+                "0[bB](?!_)[0-1_]+|" +  //二进制
+                "0[xX](?!_)[0-9a-fA-F_]+" +  //十六进制
+                ")(?<!_)[lL]?$");
+        Matcher matcher = pattern.matcher(inputStr);
+        return matcher.matches();
+    }
 }

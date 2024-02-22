@@ -108,4 +108,52 @@ fun main() {
         val strs = mutableListOf("apple", "banana1", "orange2", "grape", "melon3")
         println("过滤得到包含数字的字符串：" + RegexRecord.filterContainsNumber(strs))
     }
+    block("判断是否为合法的Java数值（十进制）") {
+        println(RegexRecord.isJavaNumericTypes("349349000"))
+        println(RegexRecord.isJavaNumericTypes("349349000l"))
+        println(RegexRecord.isJavaNumericTypes("349349000L"))
+        println(RegexRecord.isJavaNumericTypes("349349000Ll"))
+        println(RegexRecord.isJavaNumericTypes("3_4___934___900__0l"))
+        println(RegexRecord.isJavaNumericTypes("_3_4___934___900__0l"))
+        println(RegexRecord.isJavaNumericTypes("0"))
+        println(RegexRecord.isJavaNumericTypes("0L"))
+        println(RegexRecord.isJavaNumericTypes("0_"))
+        println(RegexRecord.isJavaNumericTypes("_0"))
+    }
+    block("判断是否为合法的Java数值（八进制）") {
+        println(RegexRecord.isJavaNumericTypes("00"))
+        println(RegexRecord.isJavaNumericTypes("0000L"))
+        println(RegexRecord.isJavaNumericTypes("0000Ll"))
+        println(RegexRecord.isJavaNumericTypes("0738"))
+        println(RegexRecord.isJavaNumericTypes("023__3"))
+        println(RegexRecord.isJavaNumericTypes("0_23__3"))
+        println(RegexRecord.isJavaNumericTypes("0____23__3"))
+        println(RegexRecord.isJavaNumericTypes("0_0"))
+        println(RegexRecord.isJavaNumericTypes("0_L"))
+        println(RegexRecord.isJavaNumericTypes("0_0000033L"))
+    }
+    block("判断是否为合法的Java数值（十六进制）") {
+        println(RegexRecord.isJavaNumericTypes("0x00"))
+        println(RegexRecord.isJavaNumericTypes("0x00L"))
+        println(RegexRecord.isJavaNumericTypes("0X"))
+        println(RegexRecord.isJavaNumericTypes("0xL"))
+        println(RegexRecord.isJavaNumericTypes("0X__L"))
+        println(RegexRecord.isJavaNumericTypes("0x73KL"))
+        println(RegexRecord.isJavaNumericTypes("0X73_3429_A_CCDbcL"))
+        println(RegexRecord.isJavaNumericTypes("00x89"))
+        println(RegexRecord.isJavaNumericTypes("0x_7328"))
+        println(RegexRecord.isJavaNumericTypes("0x000834_324_3454_00L"))
+    }
+    block("判断是否为合法的Java数值（二进制）") {
+        println(RegexRecord.isJavaNumericTypes("0b001"))
+        println(RegexRecord.isJavaNumericTypes("0bb0110"))
+        println(RegexRecord.isJavaNumericTypes("0bL"))
+        println(RegexRecord.isJavaNumericTypes("0b111_0L"))
+        println(RegexRecord.isJavaNumericTypes("0b111_L"))
+        println(RegexRecord.isJavaNumericTypes("0B_101"))
+        println(RegexRecord.isJavaNumericTypes("0b0201L"))
+        println(RegexRecord.isJavaNumericTypes("0b0b"))
+        println(RegexRecord.isJavaNumericTypes("0b1_0_____0____1___1L"))
+        println(RegexRecord.isJavaNumericTypes("0b00000000000000000000"))
+    }
 }

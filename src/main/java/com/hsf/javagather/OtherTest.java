@@ -26,12 +26,7 @@ public class OtherTest {
         System.out.println(sBuilder.charAt(0));
         System.out.println(String.valueOf(sBuilder.charAt(0)).equals("a"));
 
-        Pattern pattern = Pattern.compile("[^a-zA-z]+");
-        String [] strs = pattern.split("Hello, world! This is a test: 123; okay, 456; done.");
 
-        for (String str : strs) {
-            System.out.println(str);
-        }
 
     }
 }
