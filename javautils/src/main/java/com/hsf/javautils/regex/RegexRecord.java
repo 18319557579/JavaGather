@@ -333,12 +333,15 @@ public class RegexRecord {
     /**
      * 判断是否为合法的Java数值
      *
-     * 进制，二进制、八进制、十进制、十六进制
-     * 整型（int，long）、浮点数（float，double）
+     * 整型（int，long）: 二进制、八进制、十进制、十六进制。后缀可以是l L
+     * 浮点数（float，double）: 十进制。后缀可以是f F d D
      * 是否带_
-     * （大小范围限制，感觉很难用正则进行约束）
      *
-     * A:所有进制 + 整型 + 是否带_都可以 + 不做大小范围判断
+     * （大小范围限制，感觉很难用正则进行约束，因此这里不考虑范围）
+     * 正负数还没考虑
+     *  浮点数可以用科学计数法表示
+     *  NaN 和 Infinity 可以纳入考虑范围
+     *
      */
     public static boolean isJavaNumericTypes(String inputStr) {
         Pattern pattern = Pattern.compile("^(" +
@@ -348,6 +351,21 @@ public class RegexRecord {
                 "0[xX](?!_)[0-9a-fA-F_]+" +  //十六进制
                 ")(?<!_)[lL]?$");
         Matcher matcher = pattern.matcher(inputStr);
-        return matcher.matches();
+        if (matcher.matches()) {
+            System.out.println("匹配到了整型的数值");
+            return true;
+        }
+
+        pattern = Pattern.compile("^(?!_)" +
+                "[0-9_]*(?<!_).(?!_)[0-9_]*" +
+                "(?<!_)[fFdD]?$");
+        matcher = pattern.matcher(inputStr);
+        if (matcher.matches()) {
+            System.out.println("匹配到了浮点型的数值");
+            return true;
+        }
+
+        System.out.println("不是数值型");
+        return false;
     }
 }
