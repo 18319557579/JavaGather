@@ -196,4 +196,15 @@ fun main() {
         println(RegexRecord.isJavaNumericTypes("-073.8_dD"))
         println(RegexRecord.isJavaNumericTypes("-073.8d_"))
     }
+    block("判断是否为合法的Java数值（科学计数法）") {
+        println(RegexRecord.isJavaNumericTypes("1.2_003E4"));
+        println(RegexRecord.isJavaNumericTypes("5.6__7e-3"));
+        println(RegexRecord.isJavaNumericTypes("5.6__7e-_1_3"));
+        println(RegexRecord.isJavaNumericTypes("-6____0.6__61___5e00"));
+        println(RegexRecord.isJavaNumericTypes("1.2_003E1.4"));
+        println(RegexRecord.isJavaNumericTypes("1.2_003_E04"));
+        println(RegexRecord.isJavaNumericTypes("1.2_003E_04"));
+        println(RegexRecord.isJavaNumericTypes("1.2_003E"));
+        println(RegexRecord.isJavaNumericTypes("1.2_003E001D"));
+    }
 }
