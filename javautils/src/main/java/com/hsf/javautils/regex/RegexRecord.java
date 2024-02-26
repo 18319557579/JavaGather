@@ -336,6 +336,7 @@ public class RegexRecord {
      * 整型（int，long）: 二进制、八进制、十进制、十六进制。后缀可以是l L
      * 浮点数（float，double）: 十进制。后缀可以是f F d D
      * 是否带_
+     * 正负数
      *
      * （大小范围限制，感觉很难用正则进行约束，因此这里不考虑范围）
      * 正负数还没考虑
@@ -344,7 +345,7 @@ public class RegexRecord {
      *
      */
     public static boolean isJavaNumericTypes(String inputStr) {
-        Pattern pattern = Pattern.compile("^(" +
+        Pattern pattern = Pattern.compile("^(-?" +
                 "0|([1-9][0-9_]+)|" +  //十进制
                 "0[0-7_]+|" +  //八进制
                 "0[bB](?!_)[0-1_]+|" +  //二进制
@@ -356,7 +357,7 @@ public class RegexRecord {
             return true;
         }
 
-        pattern = Pattern.compile("^(?!_)" +
+        pattern = Pattern.compile("^-?(?!_)" +
                 "[0-9_]*(?<!_).(?!_)[0-9_]*" +
                 "(?<!_)[fFdD]?$");
         matcher = pattern.matcher(inputStr);
