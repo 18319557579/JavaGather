@@ -49,7 +49,7 @@ public class ThreadLocal_Count {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         Future<Long>[] futs = new Future[THREAD_COUNT];
         for (int i = 0; i < THREAD_COUNT; i++) {
-            futs[i] = exe.submit(new RndTask(0));  //线程池配合Future的使用
+            futs[i] = exe.submit(new RndTask(0));  //todo 线程池配合Future的使用
         }
         long totalTime = 0;
         for (int i = 0; i < THREAD_COUNT; i++) {
