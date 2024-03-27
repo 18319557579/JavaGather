@@ -1,4 +1,4 @@
-package com.hsf.javagather.thread.five.five_future;
+package com.hsf.javagather.thread.five.five.future;
 
 public class RealData implements Data{
     protected final String result;

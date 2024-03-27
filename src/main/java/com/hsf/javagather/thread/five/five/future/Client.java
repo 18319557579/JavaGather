@@ -1,4 +1,4 @@
-package com.hsf.javagather.thread.five.five_future;
+package com.hsf.javagather.thread.five.five.future;
 
 public class Client {
     public Data request(final String queryStr) {

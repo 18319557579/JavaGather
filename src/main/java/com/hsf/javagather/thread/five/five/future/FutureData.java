@@ -1,4 +1,4 @@
-package com.hsf.javagather.thread.five.five_future;
+package com.hsf.javagather.thread.five.five.future;
 
 public class FutureData implements Data{
     protected RealData realData = null;  //FutureData是RealData的包装

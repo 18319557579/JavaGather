@@ -1,4 +1,4 @@
-package com.hsf.javagather.thread.five.five_future.jdk;
+package com.hsf.javagather.thread.five.five.jdk_future;
 
 import java.util.concurrent.Callable;
 
