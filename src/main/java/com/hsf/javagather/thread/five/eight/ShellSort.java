@@ -19,7 +19,7 @@ public class ShellSort {
 
         while (h > 0) {
             for (int i = h; i < arr.length; i++) {
-                if (arr[i] < arr[i -h]) {
+                if (arr[i] < arr[i -h]) {  //这里其实是一个优化，如果待排序元素比有序元素的最后一个元素都大，那么就完全无需排序了，提前退出
                     int tmp = arr[i];  //待插入元素
                     int j = i - h;
                     while (j >= 0 && arr[j] > tmp) {
@@ -34,7 +34,7 @@ public class ShellSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = {6, 9, 10, 67, 89, 20, 1, 2};
+        int[] arr = {89, 9, 10, 67, 6, 20, 1, 2, 5};
         shellSort(arr);
         System.out.println(Arrays.toString(arr));
     }
