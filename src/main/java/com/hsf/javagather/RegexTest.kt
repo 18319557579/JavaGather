@@ -207,4 +207,30 @@ fun main() {
         println(RegexRecord.isJavaNumericTypes("1.2_003E"));
         println(RegexRecord.isJavaNumericTypes("1.2_003E001D"));
     }
+    block("是否为美国电话号码") {
+        println(RegexRecord.isAmericanPhoneNumber("(000)1234567"))
+        println(RegexRecord.isAmericanPhoneNumber("0001234567"))
+        println(RegexRecord.isAmericanPhoneNumber("(0001234567"))
+        println(RegexRecord.isAmericanPhoneNumber("000)1234567"))
+
+        println(RegexRecord.isAmericanPhoneNumber("(000) 1234567"))
+        println(RegexRecord.isAmericanPhoneNumber("(000)-1234567"))
+        println(RegexRecord.isAmericanPhoneNumber("(000)_1234567"))
+        println(RegexRecord.isAmericanPhoneNumber("(000)  1234567"))
+
+        println(RegexRecord.isAmericanPhoneNumber("(000)123 4567"))
+        println(RegexRecord.isAmericanPhoneNumber("(000)123-4567"))
+        println(RegexRecord.isAmericanPhoneNumber("(000)12304567"))
+        println(RegexRecord.isAmericanPhoneNumber("(000)123  4567"))
+
+        println("专门研究前面的+1  -----------")
+        println(RegexRecord.isAmericanPhoneNumber("+1(000)1234567"))
+        println(RegexRecord.isAmericanPhoneNumber("+1 (000)1234567"))
+        println(RegexRecord.isAmericanPhoneNumber("1(000)1234567"))
+        println(RegexRecord.isAmericanPhoneNumber("1 (000)1234567"))
+        println(RegexRecord.isAmericanPhoneNumber(" (000)1234567"))
+        println(RegexRecord.isAmericanPhoneNumber("+ (000)1234567"))
+        println(RegexRecord.isAmericanPhoneNumber("2221234567"))
+        println(RegexRecord.isAmericanPhoneNumber("1111234567"))
+    }
 }

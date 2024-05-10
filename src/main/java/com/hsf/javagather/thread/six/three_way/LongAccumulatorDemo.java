@@ -22,5 +22,7 @@ public class LongAccumulatorDemo {
         }
 
         System.out.println(accumulator.longValue());
+
+        
     }
 }

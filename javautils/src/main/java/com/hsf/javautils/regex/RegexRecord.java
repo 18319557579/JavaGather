@@ -368,4 +368,23 @@ public class RegexRecord {
         System.out.println("不是数值型");
         return false;
     }
+
+    /**
+     * 判断是否为美国的标准号码
+     * 1.可选的国家代码 +1，并且国家代码后面可以有一个空格或没有空格。注意，+号是可选的，但是不能单独出现，要和+1一起；空格也不能单独出现，前面要有东西才行
+     * 2.三位区号，可以用括号括起来 (123) 或者没有括号 123。区号后可以有一个空格、一个连字符 -，或者没有分隔符。
+     * 3.随后是三位数的中间号码后可以有一个空格、一个连字符 -，或者没有分隔符。
+     * 4.最后是四位数的数字
+     */
+    public static boolean isAmericanPhoneNumber(String inputStr) {
+        Pattern pattern = Pattern.compile("^" +
+                "([+]?1 ?)?" +  //最难的部分，用于匹配前面的+1
+                "(\\(\\d{3}\\)|\\d{3})[- ]?" +
+                "\\d{3}[- ]?" +
+                "\\d{4}" +
+                "$");
+        Matcher matcher = pattern.matcher(inputStr);
+        return matcher.matches();
+    }
+
 }
