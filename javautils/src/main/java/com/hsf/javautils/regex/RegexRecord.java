@@ -1,7 +1,11 @@
 package com.hsf.javautils.regex;
 
+import com.hsf.javautils.LogUtil;
+
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -387,4 +391,40 @@ public class RegexRecord {
         return matcher.matches();
     }
 
+    /**
+     * 如果本地文件中已经有同名文件，则给文件名加(1)
+     * 注意区分是否有文件扩展名的情况
+     */
+    //todo replacement能不能使用指定明确分组名的形式
+    public static String getNewFileName(String fileName) {
+        String newFileName = fileName;
+
+        //第一个捕获组使用惰性匹配（因为要首先考虑末尾的文件扩展名存在的情况），第二个捕获组使用贪婪匹配。
+        Pattern pattern = Pattern.compile("^(.*?)(\\.[^.]+)?$");
+        Matcher matcher = pattern.matcher(fileName);  //这里matcher是不会再变了，里面是原本的fileName了
+
+        int i = 1;
+        //如果本地已有该文件名，则一直继续循环。直到新的文件名在本地不存在
+        while (fileIsExists(newFileName)) {
+            newFileName = matcher.replaceFirst("$1(" + i + ")$2");  //当文件名为aaa时，$2为null
+            i++;
+        }
+
+        return newFileName;
+    }
+    private static boolean fileIsExists(String fileName) {
+        Set<String> set = new HashSet<String>(){
+            {
+                add("aaa");
+
+                add("aaa.apk");
+                add("aaa(1).apk");
+
+                add("aaa.bb.c.apk");
+                add("aaa.bb.c(1).apk");
+                add("aaa.bb.c(2).apk");
+            }
+        };
+        return set.contains(fileName);
+    }
 }

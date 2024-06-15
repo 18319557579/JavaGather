@@ -233,4 +233,9 @@ fun main() {
         println(RegexRecord.isAmericanPhoneNumber("2221234567"))
         println(RegexRecord.isAmericanPhoneNumber("1111234567"))
     }
+    block("重命名文件名") {
+        println(RegexRecord.getNewFileName("aaa"))
+        println(RegexRecord.getNewFileName("aaa.apk"))
+        println(RegexRecord.getNewFileName("aaa.bb.c.apk"))
+    }
 }
