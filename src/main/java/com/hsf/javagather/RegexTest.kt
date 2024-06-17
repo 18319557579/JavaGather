@@ -4,6 +4,7 @@ import com.hsf.javagather.utils.block
 import com.hsf.javautils.LogUtil
 import com.hsf.javautils.regex.RegexPackaged
 import com.hsf.javautils.regex.RegexRecord
+import com.hsf.javautils.regex.RegexRecord_Java8
 import com.hsf.javautils.regex.RegexUtil
 
 fun main() {
@@ -106,7 +107,7 @@ fun main() {
     }
     block("过滤得到包含数字的字符串") {
         val strs = mutableListOf("apple", "banana1", "orange2", "grape", "melon3")
-        println("过滤得到包含数字的字符串：" + RegexRecord.filterContainsNumber(strs))
+        println("过滤得到包含数字的字符串：" + RegexRecord_Java8.filterContainsNumber(strs))
     }
     block("判断是否为合法的Java数值（十进制）") {
         println(RegexRecord.isJavaNumericTypes("349349000"))

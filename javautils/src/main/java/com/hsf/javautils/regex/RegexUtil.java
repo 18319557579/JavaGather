@@ -18,6 +18,15 @@ public class RegexUtil {
     /**
      * 判断输入串inputStr中，是否存在和regex匹配的子串
      */
+    /**
+     * 第一
+     * {@link com.hsf.javautils.regex.RegexUtil#matches}
+     * 第二
+     * @see com.hsf.javautils.regex.RegexUtil#matches
+     * @param regex
+     * @param inputStr
+     * @return
+     */
     public static boolean find(String regex, String inputStr) {
         return Pattern.compile(regex).matcher(inputStr).find();
     }

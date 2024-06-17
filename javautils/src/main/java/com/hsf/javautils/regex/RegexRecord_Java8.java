@@ -7,6 +7,18 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RegexRecord_Java8 {
+    /**
+     * 过滤得到包含数字的字符串
+     */
+    public static List<String> filterContainsNumber(List<String> inputStrList) {
+        Pattern pattern = Pattern.compile("\\d");  //包含数字
+        Predicate<String> predicate = pattern.asPredicate();  //将一个正则表达式模式转换为一个谓词（Predicate），本质是Matcher.find()
+        List<String> filteredStrings = inputStrList.stream()  //先将List转为流
+                .filter(predicate)  //过滤剩下包含数字的
+                .collect(Collectors.toList());
+        return filteredStrings;
+    }
+
     //将字符串以空白符进行分割，再得到长度不少于4的元素
     public static List<String> getLengthGreaterThan4Element(String originStr) {
         Pattern pattern = Pattern.compile("\\s+");  //用空内容做分隔符

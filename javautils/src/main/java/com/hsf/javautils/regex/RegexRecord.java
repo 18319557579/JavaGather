@@ -322,17 +322,6 @@ public class RegexRecord {
         return matcher.matches();
     }
 
-    /**
-     * 过滤得到包含数字的字符串
-     */
-    public static List<String> filterContainsNumber(List<String> inputStrList) {
-        Pattern pattern = Pattern.compile("\\d");  //包含数字
-        Predicate<String> predicate = pattern.asPredicate();  //将一个正则表达式模式转换为一个谓词（Predicate），本质是Matcher.find()
-        List<String> filteredStrings = inputStrList.stream()  //先将List转为流
-                .filter(predicate)  //过滤剩下包含数字的
-                .collect(Collectors.toList());
-        return filteredStrings;
-    }
 
     /**
      * 判断是否为合法的Java数值
