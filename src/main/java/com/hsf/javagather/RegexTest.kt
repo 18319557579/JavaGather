@@ -239,4 +239,12 @@ fun main() {
         println(RegexRecord.getNewFileName("aaa.apk"))
         println(RegexRecord.getNewFileName("aaa.bb.c.apk"))
     }
+    block("去掉后缀名，只获得文件名") {
+        println(RegexPackaged.getFileName("aaa"))
+        println(RegexPackaged.getFileName("aaa."))
+        println(RegexPackaged.getFileName("aaa.apk"))
+        println(RegexPackaged.getFileName("aaa.apk."))
+        println(RegexPackaged.getFileName("aaa.bb.c.apk"))
+        println(RegexPackaged.getFileName("aaa.bb.c.apk."))
+    }
 }

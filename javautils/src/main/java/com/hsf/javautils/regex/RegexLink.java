@@ -62,7 +62,7 @@ package com.hsf.javautils.regex;
  * Matcher.start() + Matcher.end()
  *
  * {@link com.hsf.javautils.regex.RegexRecord#findAllComments}
- * {@link com.hsf.javautils.regex.RegexRecord#compressRepeatCharacter}
+ * {@link com.hsf.javautils.regex.RegexRecord#compressRepeatCharacter} 还是用到了reset()
  */
 
 /**
