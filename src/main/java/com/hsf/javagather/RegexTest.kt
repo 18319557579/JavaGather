@@ -247,4 +247,8 @@ fun main() {
         println(RegexPackaged.getFileName("aaa.bb.c.apk"))
         println(RegexPackaged.getFileName("aaa.bb.c.apk."))
     }
+    block("找到美元，都加10") {
+        println(RegexRecord.add2("The price is $10 hello"))
+        println(RegexRecord.add2("The price is #23 hello"))
+    }
 }

@@ -43,6 +43,7 @@ package com.hsf.javautils.regex;
  * {@link com.hsf.javautils.regex.RegexRecord#compressSerialRepeatCharacter}
  * {@link com.hsf.javautils.regex.RegexRecord#getNewFileName}
  * {@link com.hsf.javautils.regex.RegexRecord#compressRepeatCharacter}
+ * {@link com.hsf.javautils.regex.RegexRecord#add2}
  */
 
 /**
@@ -73,5 +74,6 @@ package com.hsf.javautils.regex;
  * {@link com.hsf.javautils.regex.RegexRecord_Java8#getLengthGreaterThan4Element}
  */
 
+//todo 去挖掘replaceFirst的所有功能
 public class RegexLink {
 }

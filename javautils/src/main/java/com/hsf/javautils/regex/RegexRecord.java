@@ -1,15 +1,9 @@
 package com.hsf.javautils.regex;
 
-import com.hsf.javautils.LogUtil;
-
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class RegexRecord {
     /**
@@ -415,5 +409,16 @@ public class RegexRecord {
             }
         };
         return set.contains(fileName);
+    }
+
+    /**
+     * 给匹配的美元前面加一个2
+     * 由于replaceFirst不能做更多操作了，因此只能前面加一个2这样了，对美元进行运算是不可能的
+     */
+    public static String add2(String inputStr) {
+        Pattern pattern = Pattern.compile("\\$(?<hi>\\d+)");
+        Matcher matcher = pattern.matcher(inputStr);
+        String result = matcher.replaceFirst("\\$" + 2 + "${hi}");
+        return result;
     }
 }
