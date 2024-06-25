@@ -1,6 +1,8 @@
 package com.hsf.javautils.regex;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -420,5 +422,24 @@ public class RegexRecord {
         Matcher matcher = pattern.matcher(inputStr);
         String result = matcher.replaceFirst("\\$" + 2 + "${hi}");
         return result;
+    }
+
+    /**
+     * 只要最里面的书名，不包括书名号的书名
+     */
+    public static List<String> getInnermostTitle(String inputStir) {
+        Pattern pattern = Pattern.compile("《([^《〈》]+)》|〈([^《〈〉]+)〉");
+        Matcher matcher = pattern.matcher(inputStir);
+        List<String> titleList = new ArrayList<>();
+        //每find()到一次，就去
+        while (matcher.find()) {
+            //当find()找得到时，那么必定是group(1)或者group(2)中有一个匹配到了
+            if (matcher.group(1) != null) {
+                titleList.add(matcher.group(1));
+            } else {
+                titleList.add(matcher.group(2));
+            }
+        }
+        return titleList;
     }
 }

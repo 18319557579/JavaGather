@@ -251,4 +251,10 @@ fun main() {
         println(RegexRecord.add2("The price is $10 hello"))
         println(RegexRecord.add2("The price is #23 hello"))
     }
+    block("找到最里层的书名") {
+        println(RegexRecord.getInnermostTitle("上午传达了《镇政府关于落实县政府〈关于落实省政府《关于棉花收购的通知》〉》。"))
+        println(RegexRecord.getInnermostTitle("我有一本《读〈地球〉和〈月球〉有感》在家里"))
+        println(RegexRecord.getInnermostTitle("《读〈石钟山记〉有感》"))
+        println(RegexRecord.getInnermostTitle("《〈中国工人〉发刊词》发表于1940年2月7日，记载在《词集》中"))
+    }
 }

@@ -31,6 +31,7 @@ package com.hsf.javautils.regex;
  * {@link com.hsf.javautils.regex.RegexPackaged#camelCaseSplit}
  * {@link com.hsf.javautils.regex.RegexRecord#isLegalWords}
  * {@link com.hsf.javautils.regex.RegexRecord#passwordSecurityLevel}
+ * {@link com.hsf.javautils.regex.RegexRecord#getInnermostTitle}
  */
 
 /**
