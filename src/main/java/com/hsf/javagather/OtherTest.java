@@ -3,8 +3,12 @@ package com.hsf.javagather;
 import com.hsf.javautils.LogUtil;
 import com.hsf.javautils.regex.RegexUtil;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static com.hsf.javautils.regex.RegexRecord_Java8.filterContainsNumber;
 
 public class OtherTest {
     public static void main(String[] args) {
@@ -27,6 +31,7 @@ public class OtherTest {
         System.out.println(String.valueOf(sBuilder.charAt(0)).equals("a"));
 
 
-
+        List<String> list = Arrays.asList("apple", "banana1", "orange2", "grape", "melon3");
+        System.out.println("过滤得到包含数字的字符串: " + filterContainsNumber(list));
     }
 }
