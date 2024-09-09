@@ -441,4 +441,15 @@ public class RegexRecord {
         }
         return titleList;
     }
+
+    public static void showInfo(int startIndex, String inputStr) {
+        Pattern pattern = Pattern.compile("Hello");
+        Matcher matcher = pattern.matcher(inputStr);
+        matcher.region(startIndex, inputStr.length());
+        while (matcher.find()) {
+            System.out.println("Found '" + matcher.group() +
+                    "' starting at " + matcher.start() +
+                    " and ending at " + matcher.end());
+        }
+    }
 }

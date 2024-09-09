@@ -3,6 +3,7 @@ package com.hsf.javautils.regex;
 /**
  * 完全匹配: 输入串要和正则完全匹配得上
  * Matcher.matches()
+ * 或 static Pattern.matches(String regex, CharSequence input) : boolean
  *
  * {@link com.hsf.javautils.regex.RegexPackaged#isWindowsDir}
  * {@link com.hsf.javautils.regex.RegexPackaged#htmlCouple}
@@ -29,6 +30,11 @@ package com.hsf.javautils.regex;
  * {@link com.hsf.javautils.regex.RegexRecord#isLegalWords}
  * {@link com.hsf.javautils.regex.RegexRecord#passwordSecurityLevel}
  * {@link com.hsf.javautils.regex.RegexRecord#getInnermostTitle}
+ *
+ * Matcher.find(int) 从指定索引开始
+ *
+ * {@link com.hsf.javautils.regex.RegexPackaged#compressRepeatCharacter}
+ * {@link com.hsf.javautils.regex.RegexPackaged#findAllComments}
  */
 
 /**
@@ -65,6 +71,25 @@ package com.hsf.javautils.regex;
  *
  * {@link com.hsf.javautils.regex.RegexRecord#findAllComments}
  * {@link com.hsf.javautils.regex.RegexRecord#compressRepeatCharacter} 还是用到了reset()
+ */
+
+/**
+ * 有使用到 group() 的操作
+ * Matcher.group()
+ *
+ * {@link com.hsf.javautils.regex.RegexRecord#findAllComments}
+ * {@link com.hsf.javautils.regex.RegexRecord#encodedIllegalWords}
+ * {@link com.hsf.javautils.regex.RegexRecord#convertDateFormat}
+ * {@link com.hsf.javautils.regex.RegexRecord#compressRepeatCharacter}
+ * {@link com.hsf.javautils.regex.RegexRecord#getInnermostTitle}
+ * {@link com.hsf.javautils.regex.RegexRecord#showInfo}
+ */
+
+/**
+ * 指定匹配的区域
+ * Matcher.region()
+ *
+ * {@link com.hsf.javautils.regex.RegexRecord#showInfo}
  */
 
 /**

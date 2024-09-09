@@ -268,4 +268,13 @@ fun main() {
         println(RegexPackaged.htmlCouple("<body><body>"))
         println(RegexPackaged.htmlCouple("<body></div>"))
     }
+    block("从指定位置 0，查找字符串中Hello的位置") {
+        RegexRecord.showInfo(0, "Hello World, Hello Java, Hello Regex")
+    }
+    block("从指定位置 1，查找字符串中Hello的位置") {
+        RegexRecord.showInfo(13, "Hello World, Hello Java, Hello Regex")
+    }
+    block("从指定位置 1，查找字符串中Hello的位置") {
+        RegexRecord.showInfo(14, "Hello World, Hello Java, Hello Regex")
+    }
 }
