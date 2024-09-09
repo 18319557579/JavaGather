@@ -60,6 +60,10 @@ fun main() {
         System.out.println(RegexPackaged.camelCaseSplit("W22HeM").joinToString())
     }
     block("判断是否为Ipv4的地址") {
+        System.out.println(RegexRecord.isIpv4("0.0.0.0"))
+        System.out.println(RegexRecord.isIpv4("00.0.0.0"))
+        System.out.println(RegexRecord.isIpv4("09.0.0.0"))
+        System.out.println(RegexRecord.isIpv4("009.0.0.0"))
         System.out.println(RegexRecord.isIpv4("100.23.232.090"))
         System.out.println(RegexRecord.isIpv4("03.008.120.249"))
         System.out.println(RegexRecord.isIpv4("256.111.120.222"))
@@ -256,5 +260,12 @@ fun main() {
         println(RegexRecord.getInnermostTitle("我有一本《读〈地球〉和〈月球〉有感》在家里"))
         println(RegexRecord.getInnermostTitle("《读〈石钟山记〉有感》"))
         println(RegexRecord.getInnermostTitle("《〈中国工人〉发刊词》发表于1940年2月7日，记载在《词集》中"))
+    }
+    block("判断是否为成对的标签") {
+        println(RegexPackaged.htmlCouple("<body></body>"))
+        println(RegexPackaged.htmlCouple("<body>t43t34</body>"))
+        println(RegexPackaged.htmlCouple("<body>sadf* sf388hj ^^38</body>"))
+        println(RegexPackaged.htmlCouple("<body><body>"))
+        println(RegexPackaged.htmlCouple("<body></div>"))
     }
 }

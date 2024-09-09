@@ -11,13 +11,13 @@ public class RegexRecord {
     /**
      * 判断是否为Ipv4的地址，范围是0.0.0.0~255.255.255.255，要考虑不足三位时前面可能补0的情况
      * 结构：^((…)\.){3}(…)$
-     * 0?\d{1,2}代表0 ~ 99，包括前面补0的情况
+     * 0?\d{1,2}代表0 ~ 99，包括前面补0的情况，像 000、099 都考虑到了
      * 1\d{2}，匹配 "100" 到 "199"
      * 2[0-4]\d，匹配 "200" 到 "249"
      * 25[0-5]，匹配 "250" 到 "255"
      */
     public static boolean isIpv4(String inputStr) {
-        return RegexUtil.matches(
+        return Pattern.matches(
                 "^((0?\\d{1,2}|1\\d{2}|2[0-4]\\d|25[0-5])\\.){3}(0?\\d{1,2}|1\\d{2}|2[0-4]\\d|25[0-5])$",
                 inputStr);
     }
@@ -34,7 +34,7 @@ public class RegexRecord {
      * 港澳，即 粤Z[0-9A-Z&&[^IO]]{4}[港澳]
      */
     public static boolean isLegalCarNum(String inputStr) {
-        return RegexUtil.matches(
+        return Pattern.matches(
                 "^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵青藏川宁琼][[A-Z]&&[^IO]][0-9A-Z&&[^IO]]{5,6}|粤([[A-Y]&&[^IO]][0-9A-Z&&[^IO]]{5,6}|Z[0-9A-Z&&[^IO]]{4}[港澳])$",
                 inputStr);
     }
@@ -72,7 +72,6 @@ public class RegexRecord {
                 words);
     }
 
-    /**/
     /**
      * 找到Java代码中所有的注释、起始位置、结束位置，并判断注释类型
      * 1.单行注释最先判断，从单行注释开始的位置到本行结束都是注释内容

@@ -17,7 +17,7 @@ public class RegexPackaged {
      */
     public static boolean isWindowsDir(String origin) {
         //即，^[a-zA-Z]:\\([^\:*<>|"?\r\n/]+\\)*([^\:*<>|"?\r\n/]+)?$
-        String regex = "^[a-zA-Z]:\\\\([^\\:*<>|\"?\\r\\n/]+\\\\)*([^\\:*<>|\"?\\r\\n/]+)?$";
+        String regex = "^[a-zA-Z]:\\\\([^:*<>|\"?\\r\\n/]+\\\\)*([^:*<>|\"?\\r\\n/]+)?$";
         return Pattern.matches(regex, origin);
     }
 

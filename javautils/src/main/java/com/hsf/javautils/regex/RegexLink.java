@@ -17,9 +17,6 @@ package com.hsf.javautils.regex;
  * {@link com.hsf.javautils.regex.RegexRecord#isJavaNumericTypes}
  * {@link com.hsf.javautils.regex.RegexRecord#isAmericanPhoneNumber}
  *
- * 说白了还是Matcher.matches()的封装
- * static Pattern.matches(String regex, CharSequence input) : boolean
- * {@link com.hsf.javautils.regex.RegexPackaged#isWindowsDir}
  */
 
 /**
@@ -37,14 +34,17 @@ package com.hsf.javautils.regex;
 /**
  * 替换掉匹配上的部分
  * Matcher.replaceFirst()  只替换第一个匹配到的
- * Matcher.replaceAll()  替换所有匹配到的
  *
  * {@link com.hsf.javautils.regex.RegexPackaged#getFileName}
+ * {@link com.hsf.javautils.regex.RegexRecord#getNewFileName}
+ * {@link com.hsf.javautils.regex.RegexRecord#add2}
+ *
+ *
+ * Matcher.replaceAll()  替换所有匹配到的
+ *
  * {@link com.hsf.javautils.regex.RegexPackaged#toStrike}
  * {@link com.hsf.javautils.regex.RegexRecord#compressSerialRepeatCharacter}
- * {@link com.hsf.javautils.regex.RegexRecord#getNewFileName}
  * {@link com.hsf.javautils.regex.RegexRecord#compressRepeatCharacter}
- * {@link com.hsf.javautils.regex.RegexRecord#add2}
  */
 
 /**
