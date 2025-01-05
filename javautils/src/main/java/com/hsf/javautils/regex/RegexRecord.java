@@ -1,5 +1,7 @@
 package com.hsf.javautils.regex;
 
+import com.github.megatronking.stringfog.StringFog;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -231,6 +233,44 @@ public class RegexRecord {
             matcher.appendReplacement(sb, afterReplace);
             matcher.appendTail(sb);  //在这一步进行替换
             System.out.println("替换后的串: " + sb.toString());
+
+            startIndex = matcher.start() + 1;
+            matcher.reset(inputStr = sb.toString());  //由于每一次都可能是最后一次，因此将本次的结果保存在inputStr中
+        }
+
+        return inputStr;
+    }
+
+    public static String decodeStringFog(String inputStr) {
+        Pattern pattern = Pattern.compile(
+                "StringFog.decrypt" +
+                        "\\(\"([0-9a-zA-Z+=/\\\\]*)\"\\s*," +
+                        "\\s*\"([0-9a-zA-Z+=/\\\\]*)\"\\)"
+        );
+        Matcher matcher = pattern.matcher(inputStr);
+
+        int startIndex = 0;  //标记开始查找的index，每次向后移动一个位置
+        while (matcher.find(startIndex)) {
+            String data = matcher.group(1);
+            String key = matcher.group(2);
+
+            /* todo 这里面临的一个问题是，正则表达式拿出来的是原字符串，由于原字符中有\n，拿出来的字符串也就包含了，不过这其实不是换行符
+            而是\n字符串，或者说是"\\n"。验证的方法是，使用sout打印，如果实际上看到了\n，而不是换行的话，那么代表是原字符串\n
+             */
+            System.out.println("group0: " + matcher.group(0) + " data: " + data + ", key: " + key + ", 匹配的开始位置: " + matcher.start());
+
+            String allMatch1 = data.replace("\\n", "\n");
+            String separator1 = key.replace("\\n", "\n");
+            System.out.println("替换后的data: " + allMatch1 + ", 替换后的key: " + separator1);
+
+            String afterReplace = StringFog.decrypt(allMatch1, separator1);
+            System.out.println("替换后的明文: " + afterReplace);
+
+            String afterReplaceWithDoubleQuotationMarks = String.format("\"%s\"", afterReplace);
+
+            StringBuffer sb = new StringBuffer();
+            matcher.appendReplacement(sb, afterReplaceWithDoubleQuotationMarks);
+            matcher.appendTail(sb);  //在这一步进行替换
 
             startIndex = matcher.start() + 1;
             matcher.reset(inputStr = sb.toString());  //由于每一次都可能是最后一次，因此将本次的结果保存在inputStr中

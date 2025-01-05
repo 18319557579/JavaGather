@@ -33,8 +33,8 @@ package com.hsf.javautils.regex;
  *
  * Matcher.find(int) 从指定索引开始
  *
- * {@link com.hsf.javautils.regex.RegexPackaged#compressRepeatCharacter}
- * {@link com.hsf.javautils.regex.RegexPackaged#findAllComments}
+ * {@link com.hsf.javautils.regex.RegexRecord#compressRepeatCharacter}
+ * {@link com.hsf.javautils.regex.RegexRecord#findAllComments}
  */
 
 /**
